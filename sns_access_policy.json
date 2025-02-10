@@ -1,0 +1,9 @@
+{
+    "Sid": "AllowTECloudInsightsSubscribe",
+    "Effect": "Allow",
+    "Principal": {
+        "AWS": "arn:aws:iam::381492131706:user/thousandeyes-integrations-user"
+    },
+    "Action": "SNS:Subscribe",
+    "Resource": "<TOPIC-ARN>"
+ }
