@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowTECloudInsightsS3ReadOnly",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+              <LIST-OF-FLOW-LOG-BUCKET-ARNS>
+            ]
+        }
+    ]
+}
