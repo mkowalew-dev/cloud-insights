@@ -1,0 +1,54 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowTEDiscoveryAPIG",
+            "Effect": "Allow",
+            "Action": "apigateway:GET",
+            "Resource": "arn:aws:apigateway:*:*:*"
+        },
+        {
+            "Sid": "StmtCloudFront",
+            "Effect": "Allow",
+            "Action": [
+                "acm:ListCertificates",
+                "acm:GetCertificate",
+                "acm:DescribeCertificate",
+                "cloudfront:GetDistribution",
+                "cloudfront:GetDistributionConfig",
+                "cloudfront:ListDistributions",
+                "cloudfront:GetStreamingDistribution",
+                "cloudfront:GetStreamingDistributionConfig",
+                "cloudfront:ListStreamingDistributions"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "StmtAGA",
+            "Action": [
+                "globalaccelerator:DescribeAccelerator",
+                "globalaccelerator:ListAccelerators",
+                "globalaccelerator:DescribeListener",
+                "globalaccelerator:ListListeners",
+                "globalaccelerator:DescribeEndpointGroup",
+                "globalaccelerator:ListEndpointGroups",
+                "acm:ListCertificates",
+                "acm:DescribeCertificate",
+                "acm:GetCertificate"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Sid": "StmtELB",
+            "Action": [
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                "elasticloadbalancing:DescribeListeners",
+                "elasticloadbalancing:DescribeListenerCertificates"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
