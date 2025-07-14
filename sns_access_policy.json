@@ -1,9 +1,32 @@
 {
-    "Sid": "AllowTECloudInsightsSubscribe",
-    "Effect": "Allow",
-    "Principal": {
-        "AWS": "arn:aws:iam::381492131706:user/thousandeyes-integrations-user"
-    },
-    "Action": "SNS:Subscribe",
-    "Resource": "<TOPIC-ARN>"
- }
+    "Version": "2008-10-17",
+    "Statement": [
+        // ... other existing statements ...
+        {
+            "Sid": "AllowTECloudInsightsSubscribe",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::381492131706:user/thousandeyes-integrations-user"
+            },
+            "Action": "SNS:Subscribe",
+            "Resource": "<TOPIC-ARN>"
+        },
+        {
+            "Sid": "AllowS3EventNotifications",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "s3.amazonaws.com"
+            },
+            "Action": "SNS:Publish",
+            "Resource": "<TOPIC-ARN>",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "<FLOW-LOG-BUCKET-ACCOUNT-ID>"
+                },
+                "ArnLike": {
+                    "aws:SourceArn": "<FLOW-LOG-BUCKET-S3-ARN>"
+                }
+            }
+        }
+    ]
+} 
